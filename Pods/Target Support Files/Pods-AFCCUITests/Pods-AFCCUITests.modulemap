@@ -1,0 +1,6 @@
+framework module Pods_AFCCUITests {
+  umbrella header "Pods-AFCCUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

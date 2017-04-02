@@ -7,6 +7,7 @@
 //
 import Foundation
 import Firebase
+import FirebaseStorage
 import SwiftKeychainWrapper
 
 //this will contain the url of our firebase database
