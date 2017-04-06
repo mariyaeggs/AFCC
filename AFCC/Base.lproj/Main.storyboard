@@ -105,13 +105,13 @@
                                     <action selector="signUpActionWith_sender:" destination="ExB-EQ-oZc" eventType="touchUpInside" id="nsj-H8-R4s"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="default-pic" translatesAutoresizingMaskIntoConstraints="NO" id="wHU-9C-ze6">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="default-pic" translatesAutoresizingMaskIntoConstraints="NO" id="wHU-9C-ze6">
                                 <rect key="frame" x="136" y="98" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.95928818512576064" blue="0.89570178602083539" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="2jI-81-p4R" appends="YES" id="cX7-aA-57J"/>
+                                    <outletCollection property="gestureRecognizers" destination="2jI-81-p4R" appends="YES" id="TdS-Fy-aJB"/>
                                 </connections>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y5i-yc-9aU">
@@ -142,7 +142,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="prb-zG-1C5" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="2jI-81-p4R">
                     <connections>
-                        <action selector="profilePicTapped:" destination="ExB-EQ-oZc" id="iFn-iY-BmZ"/>
+                        <action selector="profilePicTapped:" destination="ExB-EQ-oZc" id="VdD-8n-WeE"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
