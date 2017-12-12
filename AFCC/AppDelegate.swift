@@ -1,10 +1,13 @@
-//
-//  AppDelegate.swift
-//  AFCC
-//
-//  Created by student on 4/1/17.
-//  Copyright © 2017 Mariya Eggensperger. All rights reserved.
-//
+/* <--AppDelegate.swift-->
+ *
+ * Arcadia Friends Community Church
+ *
+ * AppDelegate for users of the AFCC 
+ * iOS Application, providing mobile
+ * services to a non-profit, religious community.
+ *
+ * @author Mariya Eggensperger
+ */
 
 import UIKit
 import Firebase
@@ -14,13 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
    var window: UIWindow?
 
-
    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-      // Override point for customization after application launch.
+      
       FIRApp.configure()
       
       return true
-   }
-
+  }
 }
-

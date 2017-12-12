@@ -11,6 +11,7 @@ target 'AFCC' do
   pod 'Firebase/Database'
   pod 'SwiftKeychainWrapper'
   pod 'Firebase/Storage'
+  pod 'FSCalendar'
 
   target 'AFCCTests' do
     inherit! :search_paths

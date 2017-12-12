@@ -20,12 +20,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
    
    var imagePicker: UIImagePickerController!
    var isImageSelected = false
-
+   
    // MARK: Outlets
    @IBOutlet weak var emailTextField: UITextField!
    @IBOutlet weak var passwordTextField: UITextField!
    @IBOutlet weak var nameTextField: UITextField!
    @IBOutlet weak var profileImageView: UIImageView!
+   @IBOutlet weak var phoneTextField: UITextField!
+   @IBOutlet weak var addressTextField: UITextField!
    
    // Additional setup after loading the view
    override func viewDidLoad() {
@@ -39,6 +41,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
       imagePicker = UIImagePickerController()
       imagePicker.delegate = self
       imagePicker.allowsEditing = true
+      
       
    }
    
@@ -55,6 +58,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
          else {
             print("Select an image.")
             return
+      }
+      guard let phoneField = phoneTextField.text, phoneField != "" else {
+         print("Enter phone.")
+         return
+      }
+      guard let addressField = addressTextField.text, addressField != "" else {
+         print("Enter address.")
+         return
       }
       
       // If the user does not input email/password
@@ -79,18 +90,18 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             } else {
                let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
                
-               let defaultAction = UIAlertAction(title: "ok", style: .cancel, handler: nil)
-               alertController.addAction(defaultAction)
+               let mainAction = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+               alertController.addAction(mainAction)
                
                self.present(alertController, animated: true, completion: nil)
             }
             if let imgData = UIImageJPEGRepresentation(img, 0.2) {
-               // setting a unique identifier
+               // Set unique identifier
                let imgUid = NSUUID().uuidString
-               // letting it know itll be a jpeg for safety
+               // Format to image.jpeg
                let metaData = FIRStorageMetadata()
                metaData.contentType = "image/jpeg"
-               // Referencing Firebase storage child with the unique identifier, and updating with the image from the picker
+               // Re Firebase storage child with the unique identifier, and updating with the image from the picker
                DataManager.shared.REF_PROFILE_IMAGES.child(imgUid).put(imgData, metadata: metaData, completion: { (metadata, error) in
                   if error != nil {
                      print("Unable to upload image Firebase storage")
@@ -104,33 +115,33 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
                   }
                })
                
-
+               
+            }
          }
+         
       }
-         // compressing the post image for Firebase storage
-}//opening app
-      
-
    }
    func postToFirebase(imgUrl: String) {
-      // setting up how I will update that specific users child value
+      // Set users child values
       let userInfo: Dictionary<String, Any> = [
          "name" : nameTextField.text!,
+         "email": emailTextField.text!,
+         "phone": phoneTextField.text!,
+         "address": addressTextField.text!,
          "profile-pic" : imgUrl
-         
       ]
       
-      // updating the database specific user with new information
+      // Update db with new information
       DataManager.shared.REF_USER_CURRENT.updateChildValues(userInfo)
       
-      // resset all fields
+      // Reset fields
       nameTextField.text = ""
       isImageSelected = false
       
       
       profileImageView.image = UIImage(named: "default-pic")
    }
-
+   
    
    @IBAction func profilePicTapped(_ sender: AnyObject) {
       present(imagePicker, animated: true, completion: nil)

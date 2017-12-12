@@ -11,17 +11,17 @@ import Firebase
 import FirebaseStorage
 import SwiftKeychainWrapper
 
-//this will contain the url of our firebase database
+//URL Firebase FIRDatabase
 let BASE = FIRDatabase.database().reference()
 
-// this will contain the url of our firebase storage
+// URL Firebase FIRStorage
 let STORAGE = FIRStorage.storage().reference()
 
 class DataManager {
    //Singleton
    static let shared = DataManager()
    
-   //DB references
+   //Database references
    private var _REF_BASE = BASE
    private var _REF_POSTS = BASE.child("posts")
    private var _REF_USERS = BASE.child("users")
@@ -46,6 +46,7 @@ class DataManager {
       let uid = KeychainWrapper.standard.string(forKey: "uid")
       let user = REF_USERS.child(uid!)
       return user
+   
    }
    
    var REF_PROFILE_IMAGES: FIRStorageReference {
@@ -57,7 +58,7 @@ class DataManager {
    }
    
    func createFirebaseDBUser(uid: String, userData: [String: String]) {
-      // when creating a user, it will create uid, and update the child values with the userData we pass in
+      // Users have unique identifiers
       REF_USERS.child(uid).updateChildValues(userData)
    }
 }
