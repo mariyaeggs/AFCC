@@ -16,9 +16,9 @@ import FirebaseAuth
 class HomeViewController: UIViewController {
    
    @IBAction func logoutAction(_sender: AnyObject) {
-      if FIRAuth.auth()?.currentUser != nil {
+      if Auth.auth().currentUser != nil {
          do {
-            try FIRAuth.auth()?.signOut()
+            try Auth.auth().signOut()
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignInViewController")
             present(vc, animated: true, completion: nil)
             

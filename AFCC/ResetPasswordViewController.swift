@@ -29,7 +29,7 @@ class ResetPasswordViewController: UIViewController {
          present(alertController, animated: true, completion: nil)
          
       } else {
-         FIRAuth.auth()?.sendPasswordReset(withEmail: self.emailResetPassword.text!, completion: { (error) in
+         Auth.auth().sendPasswordReset(withEmail: self.emailResetPassword.text!, completion: { (error) in
             
             var title = ""
             var message = ""

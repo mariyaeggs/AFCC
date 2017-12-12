@@ -32,7 +32,7 @@ class SignInViewController: UIViewController {
          self.present(alertController, animated: true, completion: nil)
          
       } else {
-         FIRAuth.auth()?.signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
+         Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
             
             if error == nil {
                
@@ -48,7 +48,7 @@ class SignInViewController: UIViewController {
                }
                
             } else {
-               FIRAuth.auth()?.createUser(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!, completion: { (user, error) in
+               Auth.auth().createUser(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!, completion: { (user, error) in
                   if error == nil {
                      print("Successfully authenticated with Firebase")
                      if let user = user {

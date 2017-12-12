@@ -60,7 +60,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - FSCalendar
-  - SwiftKeychainWrapper
+  - SwiftKeychainWrapper (~> 3.0)
 
 SPEC CHECKSUMS:
   Firebase: dbfb98ccec2dcfcd21ab9cc1b4981a3f3c8c5e26
@@ -77,6 +77,6 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
 
-PODFILE CHECKSUM: 6c7af76120c705adcef2ee8cffa2f543fba2602c
+PODFILE CHECKSUM: 67dbfbd4f33787ae7f48cba9bade623a2f08c951
 
 COCOAPODS: 1.3.1

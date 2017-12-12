@@ -9,7 +9,7 @@ target 'AFCC' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
-  pod 'SwiftKeychainWrapper'
+  pod 'SwiftKeychainWrapper', '~> 3.0'
   pod 'Firebase/Storage'
   pod 'FSCalendar'
 

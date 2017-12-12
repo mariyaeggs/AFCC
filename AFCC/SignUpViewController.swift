@@ -79,7 +79,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
          present(alertController, animated: true, completion: nil)
       }
       else {
-         FIRAuth.auth()?.createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
             
             if error == nil {
                print("Successfully signed up!")
@@ -99,10 +99,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
                // Set unique identifier
                let imgUid = NSUUID().uuidString
                // Format to image.jpeg
-               let metaData = FIRStorageMetadata()
+               let metaData = StorageMetadata()
                metaData.contentType = "image/jpeg"
                // Re Firebase storage child with the unique identifier, and updating with the image from the picker
-               DataManager.shared.REF_PROFILE_IMAGES.child(imgUid).put(imgData, metadata: metaData, completion: { (metadata, error) in
+               DataManager.shared.REF_PROFILE_IMAGES.child(imgUid).putData(imgData, metadata: metaData, completion: { (metadata, error) in
                   if error != nil {
                      print("Unable to upload image Firebase storage")
                   } else {
@@ -132,7 +132,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIImagePicker
       ]
       
       // Update db with new information
-      DataManager.shared.REF_USER_CURRENT.updateChildValues(userInfo)
+      DataManager.shared.REF_USER_CURRENT?.updateChildValues(userInfo)
       
       // Reset fields
       nameTextField.text = ""

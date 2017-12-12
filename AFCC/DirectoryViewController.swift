@@ -16,9 +16,9 @@ import FirebaseDatabase
 
 class DirectoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
    
-   var ref: FIRDatabaseReference!
+   var ref: DatabaseReference!
    let cellID = "Cell"
-   private var refHandle: FIRDatabaseHandle!
+   private var refHandle: DatabaseHandle!
    var userList = [Users]()
    
    @IBOutlet weak var userTable: UITableView!
@@ -26,7 +26,7 @@ class DirectoryViewController: UIViewController, UITableViewDataSource, UITableV
    override func viewDidLoad() {
       super.viewDidLoad()
       //Set firebase database reference
-      ref = FIRDatabase.database().reference()
+      ref = Database.database().reference()
       self.userTable.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
       fetchUserData { (success) in
          OperationQueue.main.addOperation ({
